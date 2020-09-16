@@ -1,0 +1,16 @@
+name: CI
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: build
+      run: |
+        wget https://github.com/JetBrains/kotlin/releases/download/v1.4.10/kotlin-native-linux-1.4.10.tar.gz
+        tar xzvf kotlin-native-linux-1.4.10.tar.gz
+        kotlin-native-linux-1.4.10/bin/kotlinc  hello.kt -o hello
+        ./hello
