@@ -17,4 +17,10 @@ jobs:
         kotlin-native-linux-1.4.10/bin/kotlinc-native hello.kt -o hello
     - name: run
       run: |
-        ./hello
+        ./hello.kexe
+    - name: cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: |
+          /home/runner/.konan
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
