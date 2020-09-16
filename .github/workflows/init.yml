@@ -12,5 +12,9 @@ jobs:
       run: |
         wget https://github.com/JetBrains/kotlin/releases/download/v1.4.10/kotlin-native-linux-1.4.10.tar.gz
         tar xzvf kotlin-native-linux-1.4.10.tar.gz
-        kotlin-native-linux-1.4.10/bin/kotlinc  hello.kt -o hello
+    - name: compile
+      run: |
+        kotlin-native-linux-1.4.10/bin/kotlinc-native hello.kt -o hello
+    - name: run
+      run: |
         ./hello
